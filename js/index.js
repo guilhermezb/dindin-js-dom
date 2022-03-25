@@ -21,7 +21,13 @@ linkCursos.setAttribute('href', 'cursos.html');
 
 
 //----------------------------------------------------------
+
+let page = window.location.pathname;
+
+if (page === '/index.html') {
+
 //Home
+
 //1. No banner da home, está faltando centralizar os elementos filhos da section que tem o id #introducao.
 
 document.querySelector('#introducao').style.justifyContent ='center';
@@ -36,8 +42,6 @@ document.querySelector('.titulo.depoimento h3').innerHTML = "O que falam sobre n
 //---------------------------------------------------------------
 
 //3. Na etapa de blog, o título deveria ser "Mais conteúdo pra você".
-
-
 
 let titulo = document.querySelectorAll('.titulo h3')[1].innerHTML = 'Mais conteúdo pra você'
 
@@ -83,10 +87,46 @@ novoCurso.appendChild(novaDivCurso);
 
 novaDivCurso.setAttribute('id', 'independencia');
 
+}
+
 //----------------------------------------------------------------
 
+if (page === '/contato.html') {
 
 //Contato
 
-//1. O formulário não está funcionando, o atributo action deve mandar para url
-//sucesso.html
+//1. O formulário não está funcionando, o atributo action deve mandar para url sucesso.html
+
+let form = document.querySelector("form");
+form.setAttribute("action", "sucesso.html");
+
+//----------------------------------------------------------------
+
+// 2. Após o campo de email, precisamos de um novo campo para que o usuário adicione também um número de telefone.
+
+let inputPhone = document.createElement("input");
+inputPhone.setAttribute("type", "tel");
+inputPhone.setAttribute("placeholder", "telefone");
+let textArea = document.querySelector("textarea");
+let formPai = document.querySelector("form");
+formPai.insertBefore(inputPhone, textArea);
+
+//-----------------------------------------------------------------
+
+// 3. O campo de mensagem está ultrapassando o tamanho do elemento pai. Podemos resolver adicionando o atributo box-sizing: border-box;
+
+let box = document.querySelector('textarea');
+box.style.boxSizing = 'border-box'
+
+//-----------------------------------------------------------------
+
+// 4.  O botão não está do tamanho adequado, precisa ter uma largura maior;
+
+let btn = document.getElementById('enviar');
+btn.style.width = '150px';
+
+//------------------------------------------------------------------
+
+// 5. Abaixo da section do formulário, adicione uma seção de comentário igual a página Home.
+
+}
